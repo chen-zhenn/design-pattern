@@ -1,0 +1,29 @@
+{
+  "name": "design-patterns",
+  "version": "1.0.0",
+  "main": "index.js",
+  "license": "MIT",
+  "type": "module",
+  "scripts": {
+    "ts": "tsc",
+    "ts:watch": "yarn ts --watch",
+    "js": "esbuild src/js/index.ts --bundle --outfile=dist/js/index.js",
+    "js:watch": "yarn js --watch",
+    "html": "yarn pug src/*.pug -o dist",
+    "html:watch": "yarn pug -w src/*.pug -o dist",
+    "watchers": "concurrently 'yarn js:watch' 'yarn html:watch'",
+    "transpile:all": "yarn js && yarn html",
+    "server": "lite-server --baseDir=\"dist\" & wait-on --delay=30000 && yarn watchers",
+    "dev": "yarn transpile:all && yarn server",
+    "dev:node": "nodemon dist/js/index.js"
+  },
+  "devDependencies": {
+    "esbuild": "^0.17.15",
+    "lite-server": "^2.6.1",
+    "pug": "^3.0.2",
+    "pug-cli": "^1.0.0-alpha6",
+    "typescript": "^5.0.3",
+    "wait-on": "^7.0.1"
+  },
+  "dependencies": {}
+}
