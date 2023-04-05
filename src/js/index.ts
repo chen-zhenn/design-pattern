@@ -1,1 +1,3 @@
-console.log("Index JS file...")
+import { afrosamurai } from "./creational/singleton";
+
+console.log(afrosamurai)
